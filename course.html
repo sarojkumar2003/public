@@ -7,7 +7,7 @@
     <title>Course Description</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="./assets/images/fevicon icon.png">
-    <style>
+       <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -158,79 +158,37 @@
         .cta-button:hover {
             background-color: #218838;
         }
-         /* General container for the form */
-        #enrollment-form {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 30px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
 
-        h2 {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        /* Label styling */
-        label {
-            font-size: 16px;
-            font-weight: 600;
-            color: #333;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        /* Input field styling */
-        input[type="text"],
-        input[type="email"] {
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            border: 2px solid #ddd;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            box-sizing: border-box;
-            transition: border-color 0.3s;
-        }
-
-        input[type="text"]:focus,
-        input[type="email"]:focus {
-            border-color: #007BFF;
-            outline: none;
-        }
-
-        /* Submit button styling */
-        input[type="submit"] {
-            background-color: #007BFF;
+        /* General container for the Enroll Now button */
+        .enroll-now-button {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007bff;
             color: white;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            border: none;
+            text-decoration: none;
             border-radius: 6px;
-            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            width: auto; /* Adjusted width */
             transition: background-color 0.3s, transform 0.2s;
-            width: 100%;
         }
 
-        input[type="submit"]:hover {
+        /* Optionally, set a fixed width */
+        .enroll-now-button {
+            width: 110px; /* For example, you can set the width in pixels */
+        }
+
+        .enroll-now-button:hover {
             background-color: #0056b3;
             transform: scale(1.05);
         }
 
         /* Responsive styling */
         @media (max-width: 600px) {
-            #enrollment-form {
-                padding: 20px;
-            }
-
-            input[type="submit"] {
-                font-size: 16px;
+            .enroll-now-button {
                 padding: 12px;
+                font-size: 16px;
             }
         }
         
@@ -244,10 +202,10 @@
         </div>
         <a href="index.html" class="back-button">Back to Home</a>
          <!-- Form Section, hidden by default -->
-        <div id="enrollment-form" style="display: none;">
+        <!-- <div id="enrollment-form" style="display: none;">
             <h2>Enrollment Form</h2>
             <form action="https://forms.office.com/r/Vp05hh6VRh" method="get">
-                <!-- Your form fields here -->
+                 Your form fields here
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" required><br>
 
@@ -256,7 +214,7 @@
 
                 <input type="submit" value="Enroll Now">
             </form>
-        </div>
+        </div> -->
     </div>
 
     <script>
@@ -649,11 +607,10 @@
         const urlParams = new URLSearchParams(window.location.search);
         const courseId = urlParams.get('id');
 
-        // Get course content container and form
+        // Get course content container
         const courseContent = document.getElementById('course-content');
-        const enrollmentForm = document.getElementById('enrollment-form');
 
-        // Display course information and conditionally open form
+        // Display course information
         if (courseId && courses[courseId]) {
             const course = courses[courseId];
             courseContent.innerHTML = `
@@ -706,22 +663,11 @@
                         </div>
                     `).join('')}
                 </div>
-                <div class="prerequisites">
-                    <h3>Prerequisites</h3>
-                    <p>${course.prerequisites}</p>
-                    <h3>Required Tools</h3>
-                    <p>${course.toolsRequired}</p>
-                </div>
-            `;
-            
-            // Conditionally open the form if the course ID is 1
-            if (courseId === "9") {
-                enrollmentForm.style.display = "block";  // Show form for course ID 1
-            }
+                 ${courseId == 9 ? `<a href="https://rzp.io/rzp/IIAPaymet?course_id=${courseId}" class="enroll-now-button">Enroll Now ${course.price}</a>` : ''}
+`;
         } else {
-            courseContent.innerHTML = '<p>Course not found</p>';
-        }
-    </script>
+            courseContent.innerHTML = '<p>Course not found.</p>';
+        }    </script>
 </body>
 
 </html>
