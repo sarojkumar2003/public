@@ -148,13 +148,13 @@
       <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js"></script>
       <script defer src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.45.1/apexcharts.min.js"></script>
       
-
-      <!-- Gateway -->
-      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
       <!-- Optimized Font Loading -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
       
       <!-- Icons -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
@@ -355,7 +355,9 @@
         <!-- Content will be injected here -->
       </main>
 
-      <script type="module" src="payment.js"></script>
+
+      <script type="module" src="./payment.js"></script>
+
    </body>
 </html><htmlCode>
 <div id="root">
@@ -377,12 +379,9 @@
 
         <!-- Enroll Button -->
         <div class="hidden md:block">
-          
-            <button data-course-id="001" data-course-name="Web Development Course" data-course-amount="50000"
-              class="enroll-button w-full mt-2 bg-blue-600 text-white px-6 py-2 hover:bg-blue-700 transition-colors duration-300 enroll-button">
-              Enroll Now
-            </button>
-          
+          <button data-course-id="002" data-course-name="Python Programming Course" data-course-amount="50000"  class="enroll-button bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors duration-300">
+            Enroll Now
+          </button>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -401,7 +400,7 @@
         <a href="#syllabus" class="block py-2 px-4 text-gray-600 hover:bg-blue-50">Syllabus</a>
         <a href="#features" class="block py-2 px-4 text-gray-600 hover:bg-blue-50">Features</a>
         <a href="#testimonials" class="block py-2 px-4 text-gray-600 hover:bg-blue-50">Testimonials</a>
-        <button id="enroll-button-1" class="w-full mt-2 bg-blue-600 text-white px-6 py-2 hover:bg-blue-700 transition-colors duration-300 ">
+        <button class="w-full mt-2 bg-blue-600 text-white px-6 py-2 hover:bg-blue-700 transition-colors duration-300">
           Enroll Now
         </button>
       </div>
@@ -425,7 +424,7 @@
       <!-- Main Content -->
       <div class="transform hover:scale-105 transition-transform duration-500">
         <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in">
-          Web Development Course
+          Python Programming Course
         </h1>
         
         <p class="text-xl md:text-2xl text-white mb-8 animate-slide-up">
@@ -433,8 +432,8 @@
         </p>
 
         <div class="space-y-4">
-          <button data-course-id="001" data-course-name="Web Development Course" data-course-amount="50000" class="enroll-button group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-transparent overflow-hidden border-2 border-white rounded-full hover:bg-white hover:text-blue-600 transition-all duration-300">
-            <span  class="relative z-10 enroll-button">Enroll Now Today!</span>
+          <button data-course-id="002" data-course-name="Python Programming Course" data-course-amount="50000" class="enroll-button group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-transparent overflow-hidden border-2 border-white rounded-full hover:bg-white hover:text-blue-600 transition-all duration-300">
+            <span class="relative z-10">Enroll Now for Free!</span>
             <div class="absolute inset-0 -translate-x-full group-hover:translate-x-0 bg-white transition-transform duration-300"></div>
           </button>
           
@@ -555,26 +554,15 @@
                 <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                 </svg>
-                Basic concepts of HTML, CSS, and JavaScript.
+                Learn Python syntax, installation, and fundamentals.
               </li>
               <li class="flex items-center">
                 <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                 </svg>
-                Learn how to create and style web pages.
+                Master loops, functions, and error handling.
               </li>
-              <li class="flex items-center">
-                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Basic programming with JavaScript.
-              </li>
-              <li class="flex items-center">
-                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Introduction to Git for tracking code changes.
-              </li>
+                        
             </ul>
           </div>
         </div>
@@ -595,31 +583,13 @@
                 <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                 </svg>
-                Responsive design and layout techniques.
+                Classes, objects, inheritance, and polymorphism.
               </li>
               <li class="flex items-center">
                 <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                 </svg>
-                ES6 features, handling APIs and async functions.
-              </li>
-              <li class="flex items-center">
-                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Basics of React and Vue.
-              </li>
-              <li class="flex items-center">
-                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Introduction to Node.js and databases.
-              </li>
-              <li class="flex items-center">
-                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Basic web security practices.
+                List comprehensions, generators, file handling, and debugging.
               </li>
             </ul>
           </div>
@@ -641,31 +611,13 @@
                 <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                 </svg>
-                Create a personal website.
+                Web scraping, automation, and data analysis.
               </li>
               <li class="flex items-center">
                 <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                 </svg>
-                Build a simple shopping website.
-              </li>
-              <li class="flex items-center">
-                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Create a basic blog with user accounts.
-              </li>
-              <li class="flex items-center">
-                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Display data from APIs.
-              </li>
-              <li class="flex items-center">
-                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Work on group projects using GitHub.
+                Create and showcase projects on GitHub.
               </li>
             </ul>
           </div>
@@ -687,31 +639,13 @@
                 <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                 </svg>
-                Build a developer resume.
+                Focus on algorithms, data structures, and Python-specific challenges.
               </li>
               <li class="flex items-center">
                 <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                 </svg>
-                Showcase projects online.
-              </li>
-              <li class="flex items-center">
-                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Practice coding and interview questions.
-              </li>
-              <li class="flex items-center">
-                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Communication and teamwork.
-              </li>
-              <li class="flex items-center">
-                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Find job opportunities and network.
+                Build a strong resume and explore roles like Data Scientist, Backend Developer, and Python Engineer.
               </li>
             </ul>
           </div>
@@ -785,7 +719,7 @@
                 </svg>
               </div>
               <h3 class="text-2xl font-bold text-gray-800 mb-4">Certification</h3>
-              <p class="text-gray-600">Industry-recognized certification</p>
+              <p class="text-gray-600">Industry-recognized certification </p>
             </div>
           </div>
         </div>
@@ -825,7 +759,7 @@
 </div>
 </htmlCode><htmlCode>
 <div id="root">
-  <section id="testimonials" class="py-20 bg-gradient-to-b from-blue-50 to-white overflow-hidden ">
+  <section id="testimonials" class="py-20 bg-gradient-to-b from-blue-50 to-white overflow-hidden">
     <div class="container mx-auto px-4">
       <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">What Our Students Say</h2>
 
@@ -948,15 +882,14 @@
     </div>
   </section>
 </div>
-</htmlCode>
-<htmlCode>
+</htmlCode><htmlCode>
 <div id="root">
   <section id="achievements" class="py-20 bg-gradient-to-b from-white to-blue-50">
     <div class="container -mt-[5rem] mx-auto px-4">
       <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">Student Achievements</h2>
 
       <!-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> -->
-         <!-- Achievement Card 1 -->
+        <!-- Achievement Card 1 -->
         <!-- <div class="bg-white rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-all duration-300">
           <div class="flex items-center justify-center mb-6">
             <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center">
@@ -993,8 +926,8 @@
           </div>
           <h3 class="text-2xl font-bold text-center text-gray-800 mb-4">50+</h3>
           <p class="text-center text-gray-600">Partner Companies</p>
-        </div>
-      </div> -->
+        </div> -->
+      </div>
 
       <!-- Achievement Stats -->
       <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -1052,8 +985,7 @@
     </div>
   </section>
 </div>
-</htmlCode>
-<htmlCode>
+</htmlCode><htmlCode>
 <div id="root">
   <section id="enrollment" class="py-20 bg-gradient-to-br from-blue-600 to-purple-600 text-white">
     <div class="container mx-auto px-4">
@@ -1102,9 +1034,9 @@
 
         <!-- CTA Button -->
         <div class="group relative inline-block">
-          <div class="absolute -inset-1 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-          <button data-course-id="001" data-course-name="Web Development Course" data-course-amount="50000" class="enroll-button relative px-12 py-4 bg-white text-blue-600 text-xl font-bold rounded-lg transform hover:scale-105 transition-all duration-300">
-            Enroll Today for ₹500!
+          <div data-course-id="002" data-course-name="Python Programming Course" data-course-amount="50000" class="enroll-button absolute -inset-1 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+          <button data-course-id="002" data-course-name="Python Programming Course" data-course-amount="50000" class="enroll-button relative px-12 py-4 bg-white text-blue-600 text-xl font-bold rounded-lg transform hover:scale-105 transition-all duration-300">
+            Enroll Today Now ₹500!
           </button>
         </div>
 
@@ -1131,7 +1063,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
         <!-- Company Info -->
         <div>
-          <h3 class="text-2xl font-bold mb-6">InterIndianAcademy</h3>
+          <h3 class="text-2xl font-bold mb-6">Intern Indian Academy</h3>
           <p class="text-gray-400 mb-6">Empowering students with industry-relevant skills and knowledge for a successful career.</p>
           <div class="flex space-x-4">
             <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
@@ -1200,7 +1132,7 @@
       <!-- Bottom Bar -->
       <div class="border-t border-gray-800 pt-8">
         <p class="text-center text-gray-400 text-sm">
-          © 2024 InterIndianAcademy. All rights reserved.
+          © 2024 Intern Indian Academy. All rights reserved.
         </p>
       </div>
     </div>

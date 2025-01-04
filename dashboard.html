@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Learning Dashboard</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #4361ee;
+      --secondary-color: #3f37c9;
+      --text-color: #2b2d42;
+      --bg-color: #f8f9fa;
+      --card-bg: #ffffff;
+      --shadow-color: rgba(67, 97, 238, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 100%;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    .header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .header p {
+      color: #666;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+
+    .course-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+      gap: 2rem;
+      padding: 1rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .course-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 8px 30px var(--shadow-color);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .course-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px var(--shadow-color);
+    }
+
+    .video-container {
+      position: relative;
+      padding-top: 56.25%;
+      background: #000;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .course-content {
+      padding: 1.5rem;
+    }
+
+    .course-card h2 {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .course-card p {
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .course-id {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: rgba(67, 97, 238, 0.1);
+      color: var(--primary-color);
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .loading {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #666;
+      padding: 2rem;
+      animation: pulse 1.5s infinite;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .course-list {
+        gap: 1.5rem;
+        padding: 0.5rem;
+      }
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Your Learning Journey</h1>
+      <p>Access your enrolled courses and continue learning</p>
+    </div>
+
+    <div id="course-list" class="course-list">
+      <!-- Courses will be loaded here -->
+    </div>
+    <div id="loading" class="loading">Loading your courses...</div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBG7xpj4vW6hHOry-5_350fMbOohbucoaA",
+      authDomain: "form-login-fd687.firebaseapp.com",
+      projectId: "form-login-fd687",
+      storageBucket: "form-login-fd687.appspot.com",
+      messagingSenderId: "250025418161",
+      appId: "1:250025418161:web:7401140f416e46225ff190",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const courseList = document.getElementById("course-list");
+    const loadingElement = document.getElementById("loading");
+
+    const allCourses = {
+      "001": {
+        name: "Web Development Course",
+        description: "Master the art of web development with HTML, CSS, JavaScript, and more!",
+        videoUrl: "https://www.youtube.com/embed/nVzUI5hg3q4?si=43w-kFha2ZdNu-z4",
+      },
+      "002": {
+        name: "Python Programming Course",
+        description: "Learn Python programming to create versatile applications, from web development to automation, using efficient coding techniques and best practices.",
+        videoUrl: "https://www.youtube.com/embed/nVzUI5hg3q4?si=43w-kFha2ZdNu-z4",
+      },
+      "003": {
+        name: "AI & Machine Learning Course",
+        description: "Master AI and Machine Learning to build intelligent systems, analyze data, and implement cutting-edge algorithms for real-world applications.",
+        videoUrl: "https://www.youtube.com/embed/nVzUI5hg3q4?si=43w-kFha2ZdNu-z4",
+      },
+      "004": {
+        name: "App Development Course",
+        description: "Create mobile apps for Android and iOS using modern frameworks and tools.",
+        videoUrl: "https://www.youtube.com/embed/nVzUI5hg3q4?si=43w-kFha2ZdNu-z4",
+      },
+      "005": {
+        name: "Digital Marketing Course",
+        description: "Learn how to market online effectively with SEO, content marketing, and more.",
+        videoUrl: "https://www.youtube.com/embed/nVzUI5hg3q4?si=43w-kFha2ZdNu-z4",
+      },
+    };
+
+    function displayEnrolledCourses(enrolledCourses) {
+      loadingElement.style.display = "none";
+      enrolledCourses.forEach((courseId) => {
+        const course = allCourses[courseId];
+        if (course) {
+          const courseCard = document.createElement("div");
+          courseCard.classList.add("course-card");
+          courseCard.innerHTML = `
+            <div class="video-container">
+              <iframe src="${course.videoUrl}" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            <div class="course-content">
+              <h2>${course.name}</h2>
+              <p>${course.description}</p>
+              <div class="course-id">Course ID: ${courseId}</div>
+            </div>
+          `;
+          courseList.appendChild(courseCard);
+        }
+      });
+    }
+
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        window.location.href = "login.html";
+        return;
+      }
+
+      try {
+        const userRef = doc(db, "users", user.uid);
+        const userDoc = await getDoc(userRef);
+
+        if (userDoc.exists() && userDoc.data().courses) {
+          const enrolledCourses = Object.keys(userDoc.data().courses);
+          if (enrolledCourses.length > 0) {
+            displayEnrolledCourses(enrolledCourses);
+          } else {
+            courseList.innerHTML = "<p class='loading'>No courses enrolled yet.</p>";
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        courseList.innerHTML = "<p class='loading'>Error loading courses. Please try again later.</p>";
+      }
+    });
+  </script>
+</body>
+</html>
